@@ -79,3 +79,35 @@ app.get(/^\/api\/balance\/.*$/, async (req, res, next) => {
         Balance: balanceResponse.data,
     });
 });
+
+/* Fetches transactions */
+app.get(/^\/api\/transactions\/.*$/, async (req, res, next) => {
+    let cursor = null;
+    let added = [];
+    let modified = [];
+
+    let removed = [];
+    let hasMore = true;
+
+    while (hasMore) {
+        const request = {
+            access_token: (req.url.split("/"))[3],
+            cursor: cursor,
+        }
+
+        const response = await client.transactionsSync(request);
+        const data = response.data;
+        added = added.concat(data.added);
+        modified = modified.concat(data.modified);
+        removed = removed.concat(data.removed);
+
+        hasMore = data.has_more;
+
+        cursor = data.next_cursor;
+    }
+
+    const compareTxnsByDateAscending = (a, b) => (a.date > b.date) - (a.date < b.date);
+    // Return the 8 most recent transactions
+    const recently_added = [...added].sort(compareTxnsByDateAscending).slice(-8);
+    res.json({latest_transactions: recently_added});
+})

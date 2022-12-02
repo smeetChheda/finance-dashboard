@@ -52,6 +52,15 @@ export default function Dashboard() {
         setLoading(false);
     })
 
+    const getTransactions = useCallback(async () => {
+        setLoading(true);
+        const res = await fetch("api/transactions/" + etoken, {});
+
+        const data = await res.json();
+        console.log(data);
+        setLoading(false);
+    })
+
     return (
         <div>
             {
@@ -68,8 +77,8 @@ export default function Dashboard() {
                         Get Balance
                     </button>
 
-                    <button disabled={loading}>
-                        Get Balance
+                    <button onClick={() => getTransactions()} disabled={loading}>
+                        Get Transactions
                     </button>
                 </div>
                 )
