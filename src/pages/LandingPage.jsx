@@ -8,6 +8,7 @@ import { loadLinksPreset } from 'tsparticles-preset-links';
 import PieChartIcon from "../assets/svg-icons/graph-pie.svg";
 import BarChartIcon from "../assets/svg-icons/graph-bar.svg";
 import LineChartIcon from "../assets/svg-icons/graph-line.svg";
+import GreenRightArrow from "../assets/svg-icons/right-arrow.svg";
 
 export default function LandingPage() {
     const tsParticlesOptions = {
@@ -50,18 +51,22 @@ export default function LandingPage() {
                 </h3>
             </div>
             <div className="flex items-center flex-none basis-1/3">
-                <div className="h-[60vh] w-[30vw] px-[20px] py-[100px] bg-white rounded-3xl shadow-2xl"> {/* Login Dialogue */}
-                    <h2 className="text-5xl text-center">
+                <div className="h-[60vh] w-[30vw] px-[20px] py-[100px] bg-white rounded-3xl shadow-2xl flex flex-col"> {/* Login Dialogue */}
+                    <h2 className="basis-1/4 text-5xl text-center">
                         Connect your bank account and get started.
                     </h2>
-                    <div className="flex flex-row flex-wrap justify-center py-[50px] gap-[50px]">
+                    <div className="basis-1/4 flex flex-row flex-wrap justify-center py-[50px] gap-[50px]">
                         <img src={PieChartIcon} alt=""/>
                         <img src={BarChartIcon} alt=""/>
                         <img src={LineChartIcon} alt=""/>
                     </div>
-                    <button className="justify-self-center rounded-full bg-gray-dark-2 px-[50px] text-white">
-                        Login
-                    </button>
+                    <div className="basis-1/2 flex items-center justify-center px-6">
+                        <button className="group flex flex-row gap-6 items-center h-max w-full px-[50px] text-white-2 text-5xl py-5 rounded-full bg-black shadow-xl transition ease-in-out duration-150
+                        hover:scale-105 hover:shadow-2xl hover:bg-white-2 hover:text-gray-dark-3">
+                            <span className="origin-center transition ease-in-out duration-700 group-hover:translate-x-3">Connect</span>
+                            <img className="origin-center transition ease-in-out duration-700 group-hover:translate-x-[250%]" src={GreenRightArrow} alt=""/>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
