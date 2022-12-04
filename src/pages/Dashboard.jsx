@@ -2,6 +2,7 @@ import React, { useState, useContext, useCallback } from 'react';
 import "../App.css";
 
 import { UserContext } from '../components/UserContext';
+import Sidebar from '../components/Sidebar';
 
 export default function Dashboard() {
     const [loading, setLoading] = useState(false);
@@ -26,14 +27,16 @@ export default function Dashboard() {
     }, [token])
 
     return (
-        <div>
-            {token}
-            <button onClick={() => getBalance()} disabled={loading}>
-                Get Balance
-            </button>
-            <button onClick={() => getTransactions()} disabled={loading}>
-                Get Transactions
-            </button>
+        <div className="flex flex-row flex-wrap">
+            <Sidebar />
+            <div>
+                <button onClick={() => getBalance()} disabled={loading}>
+                    Get Balance
+                </button>
+                <button onClick={() => getTransactions()} disabled={loading}>
+                    Get Transactions
+                </button>
+            </div>
         </div>
     )
 
