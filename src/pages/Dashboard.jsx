@@ -1,91 +1,39 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { usePlaidLink } from "react-plaid-link";
-import "./App.css";
-let etoken = null;
+import React, { useState, useContext, useCallback } from 'react';
+import "../App.css";
+
+import { UserContext } from '../components/UserContext';
+
 export default function Dashboard() {
-    const [token, setToken] = useState(null);
-    const [linked, setLinked] = useState(false);
-    const [loading, setLoading] = useState(true);
-
-    const onSuccess = useCallback(async (publicToken) => {
-        setLoading(true);
-        const res = await fetch("api/exchange_public_token", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ public_token: publicToken })
-        });
-        const data = await res.json();
-        etoken = data.token;
-        setLoading(false);
-        setLinked(true);
-        console.log("hi")
-    }, [setLoading, setLinked]);
-
-    /* Create the link token */
-    const createLinkToken = useCallback(async ()=>{
-        const response = await fetch("/api/create_link_token", {}).catch(err => console.log(err));
-        const data = await response.json();
-        setToken(data.link_token);
-        localStorage.setItem("link_token", data.link_token);
-    }, [setToken]);
-
-    const config = {
-        token,
-        onSuccess
-    };
-
-    const { open, ready } = usePlaidLink(config);
-
-    useEffect(() => {
-        if (token==null)
-            createLinkToken();
-    }, [token]);
+    const [loading, setLoading] = useState(false);
+    const { token } = useContext(UserContext);
 
     const getBalance = useCallback(async () => {
         setLoading(true);
-        const res = await fetch("/api/balance/" + etoken,{});
+        const res = await fetch("/api/balance/" + token,{});
 
         const data = await res.json();
         console.log(data);
         setLoading(false);
-    })
+    }, [token])
 
     const getTransactions = useCallback(async () => {
         setLoading(true);
-        const res = await fetch("api/transactions/" + etoken, {});
+        const res = await fetch("api/transactions/" + token, {});
 
         const data = await res.json();
         console.log(data);
         setLoading(false);
-    })
+    }, [token])
 
     return (
         <div>
-            {
-                !linked &&
-                    <button onClick={() => open()} disabled={!ready}>
-                        Link
-                    </button>
-            }
-            {
-                linked && !loading &&
-                (
-                <div> 
-                    <button onClick={() => getBalance()} disabled={loading}>
-                        Get Balance
-                    </button>
-
-                    <button onClick={() => getTransactions()} disabled={loading}>
-                        Get Transactions
-                    </button>
-                </div>
-                )
-
-
-            }
-            
+            {token}
+            <button onClick={() => getBalance()} disabled={loading}>
+                Get Balance
+            </button>
+            <button onClick={() => getTransactions()} disabled={loading}>
+                Get Transactions
+            </button>
         </div>
     )
 
