@@ -3,6 +3,8 @@ import { createContext } from 'react';
 export const UserContext = createContext({
     token: null,
     setToken: null,
-    sidebarOpen: true,
-    setSidebarOpen: null,
+    user: true,
+    setUser: null,
+    balance: null,
+    setBalance: null
 });

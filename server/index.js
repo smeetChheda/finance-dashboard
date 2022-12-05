@@ -111,3 +111,12 @@ app.get(/^\/api\/transactions\/.*$/, async (req, res, next) => {
     const recently_added = [...added].sort(compareTxnsByDateAscending).slice(-8);
     res.json({latest_transactions: recently_added});
 })
+
+/* Fetch identity */
+
+app.get(/^\/api\/identity\/.*$/, async (req, res, next) => {
+    const access_token = req.url.split("/")[3];
+
+    const identityRes = await client.identityGet({ access_token }).catch(e => {console.log(e.response.data)});
+    res.json(identityRes.data.accounts);
+});
