@@ -5,8 +5,15 @@ module.exports = {
     extend: {
       screens: {
         'md': '1175px',
-      }
+      },
+      
+      fontFamily: {
+        sans: ['Roboto Mono', 'sans-serif'],
+        Orbitron: ['Orbitron', 'sans-serif'],
+        anek: ['Anek Odia', 'sans-serif']
+      },
     },
+    
     colors: {
       'white': '#F8F9FA',
       'white-2': '#E9ECEF',
@@ -17,6 +24,8 @@ module.exports = {
       'gray-dark-2': '#495057',
       'gray-dark-3': '#343a40',
       'black': '#212529',
+      'green-text': '#50ba6f',
+      'blue-1': '#468faf'
     }
   },
   plugins: [],
