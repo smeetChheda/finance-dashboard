@@ -25,7 +25,8 @@ module.exports = {
       'gray-dark-3': '#343a40',
       'black': '#212529',
       'green-text': '#50ba6f',
-      'blue-1': '#468faf'
+      // 'blue-1': '#7209b7',
+      'blue-1': '#5a189a'
     }
   },
   plugins: [],

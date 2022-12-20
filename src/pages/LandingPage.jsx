@@ -107,7 +107,7 @@ export default function LandingPage() {
                         <img src={LineChartIcon} alt=""/>
                     </div>
                     <div className="basis-1/2 flex items-center justify-center px-6">
-                        <button onClick={() => openPlaidLogin()} className="group flex flex-row gap-6 items-center h-max w-full px-[50px] text-blue-1 text-5xl py-5 rounded-full bg-black shadow-xl transition ease-in-out duration-150
+                        <button onClick={() => openPlaidLogin()} className="group flex flex-row gap-6 items-center h-max w-full px-[50px] text-white hover:text-blue-1 text-5xl py-5 rounded-full bg-black shadow-xl transition ease-in-out duration-150
                         hover:scale-105 hover:shadow-2xl hover:bg-white-2">
                             <span className="origin-center transition ease-in-out duration-700 group-hover:translate-x-3 pt-3">Connect</span>
                             <img className="origin-center transition ease-in-out duration-700 group-hover:translate-x-full" src={GreenRightArrow} alt=""/>

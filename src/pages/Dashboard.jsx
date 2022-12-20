@@ -94,7 +94,7 @@ export default function Dashboard() {
             <Sidebar />
             <div className="flex flex-col grow">
                 <div className="h-min m-8 pt-3 border-solid border-b-2 border-gray-light-2 bg-white rounded-xl shadow-xl flex flex-row justify-between items-center">
-                    <h1 className="text-5xl leading-[0px] font-[550] text-[#468faf]  pl-6 w-min">
+                    <h1 className="text-5xl leading-[0px] font-[550] text-blue-1 text-opacity-60  pl-6 w-min">
                         Home 
                     </h1>
                     <button onClick={() => navigate("/")} disabled = {loading} className="w-[50px] h-[40px] flex justify-center items-center bg-gradient-to-b from-white to-gray-light font-semibold mr-6 mb-4 rounded-full border-1 text-gray-dark border-blue-1 shadow-lg text-gray-dark-2 hover:scale-110 duration-200">
@@ -104,7 +104,7 @@ export default function Dashboard() {
                 <div className="flex grow m-8 border-solid border-y-2 border-gray-light-2 rounded-xl shadow-xl rotate-180">
                     <div className="rotate-180 bg-gradient-to-b from-white via-white-2 to-transparent grow grid divide-white grid-rows-4 grid-cols-1 md:grid-cols-2 md:grid-rows-2">
                         <div className="p-6 flex flex-col flex-nowrap">
-                            <h1 className="h-min font-anek text-4xl text-wrap shrink font-semibold text-[#468faf] mb-2 ">
+                            <h1 className="h-min font-anek text-4xl text-wrap shrink font-semibold text-blue-1 text-opacity-60 mb-2 ">
                                 Welcome, {user}
                             </h1>
                             <p className="text-xl max-width-full text-wrap text-gray-dark-2">
@@ -125,7 +125,7 @@ export default function Dashboard() {
 
                         </div>
                         <div className="p-6 flex flex-col flex-nowrap">
-                            <h1 className="h-min font-anek text-4xl text-wrap shrink font-semibold text-[#468faf] mb-2 ">
+                            <h1 className="h-min font-anek text-4xl text-wrap shrink font-semibold text-blue-1 text-opacity-60 mb-2 ">
                                 Recent Transactions
                             </h1> 
                             <button onClick={() => getTransactions()} disabled = {loading} className="w-[160px] h-[40px] bg-white mr-6 rounded-full border-2 border-gray-light shadow-lg text-gray-dark-2 hover:scale-110 duration-200">
